@@ -1,5 +1,5 @@
-# scripts
-Just scripts I use between different devices
+# Scripts
+Just scripts I use between different computers.
 
 ### Prerequisites
 `npm install -g clipboard-cli`
