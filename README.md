@@ -1,5 +1,5 @@
 # Scripts
-Just useful (to me) scripts and environment configuration use across unix machines.
+Just useful (to me) scripts and environment configuration used across unix machines.
 
 ### Prerequisites
 `npm install -g clipboard-cli`
