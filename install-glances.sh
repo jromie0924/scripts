@@ -1,1 +1,0 @@
-pip install -U glances py3nvml
