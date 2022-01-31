@@ -20,5 +20,6 @@ for i in *.$1; do
   mv -i -- "$i" "$new"
   let a=a+1
 done
+let a=a-1
 printf "Renamed $a files sequentially.\n"
 exit 0
