@@ -1,4 +1,4 @@
 #!/usr/bin/zsh
 
 cd $HOME
-dconf load / > saved_settings.conf
+dconf load / < saved_settings.conf
