@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/bin/bash
 
 ip="$(curl https://ipinfo.io/ip)"
 
