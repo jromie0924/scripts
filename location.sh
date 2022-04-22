@@ -3,4 +3,5 @@
 ip="$(curl https://ipinfo.io/ip)"
 
 curl https://ipinfo.io/$ip
+printf "\n"
 
