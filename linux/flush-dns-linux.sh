@@ -1,4 +1,4 @@
 #!/bin/zsh
 
-sudo systemd-resolve --flush-caches
-sudo systemd-resolve --statistics
+sudo resolvectl flush-caches
+sudo resolvectl statistics
