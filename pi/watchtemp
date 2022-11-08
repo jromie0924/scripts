@@ -1,0 +1,4 @@
+#!/bin/bash
+
+watch get_temp.sh
+
