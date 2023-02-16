@@ -1,5 +1,6 @@
 filetype plugin indent on
 set term=xterm
+set termguicolors
 syntax on
 set pastetoggle=<F2>
 set number
