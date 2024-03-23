@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<input type="file" id="file-selector" webkitdirectory>
+<script>
+  const fileSelector = document.getElementById("file-selector");
+  fileSelector.addEventListener("change", (event) => {
+    const fileList = event.target.files;
+    const dlElement = document.createElement("a");
+    dlElement.setAttribute("href", "data:text/plan;charset=utf8")
+    
+    let contents = [];
+    const contentMap = new Map();
+
+    for (const file of fileList) {
+      const filename = file.webkitRelativePath;
+      const allDirs = filename.substring(0, filename.lastIndexOf("/")).split("/");
+      // const allDirs = directory.split("/");
+      
+      let directoryBuilder = ".";
+      // debugger;
+      for (const dir of allDirs) {
+        directoryBuilder += `/${dir}`;
+        if (!contentMap.get(directoryBuilder)) {
+          contents.push(directoryBuilder);
+          contentMap.set(directoryBuilder, 1);
+        }
+      }
+
+      // console.log(contents);
+
+      // if (!contentMap.get(directory)) {
+      //   contents += `./${directory}\n`;
+      //   contentMap.set(directory, directory);
+      // }
+    }
+
+    // console.log(contents);
+    const fileContents = contents.sort().join("\n");
+
+    const element = document.createElement("a");
+    element.setAttribute("href", "data:text/plain;charset=utf8," + encodeURIComponent(fileContents));
+    element.setAttribute("download", "contents.csv");
+
+    element.style.display = "none";
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+  });
+</script>
