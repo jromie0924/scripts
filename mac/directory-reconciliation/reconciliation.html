@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <body>
-  <div>
+  <div id="container">
     <label for="file-selector" class="btn">Select a folder</label>
-    <input type="file" id="file-selector" style="visibility:hidden;" webkitdirectory>
+    <input type="file" id="file-selector" style="display:none;" webkitdirectory>
   </div>
   <style>
     label {
@@ -14,13 +14,19 @@
       cursor: pointer;
       margin-top: 1rem;
     }
+    body {
+      background-color: darkgrey;
+    }
+    #container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   </style>
   <script>
     const fileSelector = document.getElementById("file-selector");
     fileSelector.addEventListener("change", (event) => {
       const fileList = event.target.files;
-      const dlElement = document.createElement("a");
-      dlElement.setAttribute("href", "data:text/plan;charset=utf8")
       
       let contents = [];
       const contentMap = new Map();
@@ -65,6 +71,8 @@
       } else {
         alert("This directory contains no subdirectories.");
       }
+      
+      location.reload();
     });
   </script>
 </body>
