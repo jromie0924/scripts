@@ -10,9 +10,19 @@
 # This allows us to expose only the VM identifier, and allows us to pass it as an
 # argument to the vboxmanage command to back up that VM.
 
-mkdir -p $HOME/green/VBoxBackup
+directory="${HOME}/green/VBoxBackup"
+if [ -z "$1" ]
+then
+  continue
+else
+  directory="${1}"
+fi
+
+mkdir -p $directory
+
 list=$(vboxmanage list vms | cut -d"{" -f2 | cut -d"}" -f1)
 while IFS= read -r line; do
-  rm -f "${HOME}/green/VBoxBackup/${line}.ova"
-  vboxmanage export "${line}" -o "${HOME}/green/VBoxBackup/${line}.ova"
+  # rm -f "${directory}/${line}.ova"
+  # vboxmanage export "${line}" -o "${directory}/${line}.ova"
+  echo "${directory}/${line}.ova"
 done <<< "$list"
