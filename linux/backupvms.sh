@@ -24,3 +24,17 @@ while IFS= read -r line; do
   rm -f "${directory}/${line}.ova"
   vboxmanage export "${line}" -o "${directory}/${line}.ova"
 done <<< "$list"
+
+printf "%s\n" "${ids[@]}"
+
+# while IFS= read -r test; do
+#   echo $test
+# done
+
+
+# list=$(vboxmanage list vms | cut -d"{" -f2 | cut -d"}" -f1)
+# while IFS= read -r line; do
+#   # rm -f "${directory}/${line}.ova"
+#   # vboxmanage export "${line}" -o "${directory}/${line}.ova"
+#   echo "${directory}/${line}.ova"
+# done <<< "$list"
