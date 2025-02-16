@@ -1,0 +1,23 @@
+#!/bin/bash
+
+echo "Searching for updates..."
+
+cd $HOME/plane-tracker-service
+
+currentTag=$(git describe --exact-match --tags)
+
+git fetch origin
+latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
+echo "Latest tag: $latestTag"
+
+if [ "$currentTag" != "$latestTag" ]; then
+  echo "New version available: $latestTag"
+  echo "Updating..."
+  git checkout $latestTag
+  echo "Updated to $latestTag"
+  echo "Restarting service..."
+  sudo systemctl restart plane-tracker-service
+  echo "Update complete"
+else
+  echo "No updates available"
+fi
