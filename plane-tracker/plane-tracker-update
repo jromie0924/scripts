@@ -13,6 +13,7 @@ echo "Latest tag: $latestTag"
 if [ "$currentTag" != "$latestTag" ]; then
   echo "New version available: $latestTag"
   echo "Updating..."
+  git reset --hard $currentTag
   git checkout $latestTag
   echo "Updated to $latestTag"
   echo "Restarting service..."
